@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="All rights reserved"
+[[mods]]
+modId="pikminer404"
+version="0.1"
+displayName="Pikminer 404"
+
+logoFile=""
+credits="Credits to Nintendo for the amazing Pikmin games"
+authors="Fotatata, SpaceWalrus & Ethan_4D"
+description='''
+
+'''
+[[dependencies.pikminer404]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pikminer404]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"
