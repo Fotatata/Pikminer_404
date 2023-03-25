@@ -1,6 +1,10 @@
 package com.fotatata.pikminer404;
 
+import com.fotatata.pikminer404.entity.ModEntityTypes;
+import com.fotatata.pikminer404.entity.client.PikminRenderer;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -10,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(Pikminer404.MODID)
 public class Pikminer404
@@ -19,6 +24,10 @@ public class Pikminer404
 
     public Pikminer404() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        GeckoLib.initialize();
+
+        ModEntityTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -34,7 +43,7 @@ public class Pikminer404
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            EntityRenderers.register(ModEntityTypes.RED_PIKMIN.get(), PikminRenderer::new);
         }
     }
 }
