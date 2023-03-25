@@ -5,27 +5,31 @@ import com.fotatata.pikminer404.entity.custom.RedPikmin;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
+import static com.fotatata.pikminer404.Pikminer404.prefix;
+
 public class PikminModel extends AnimatedGeoModel<RedPikmin> {
     @Override
     public ResourceLocation getModelResource(RedPikmin object) {
-        return new ResourceLocation(Pikminer404.MODID, "pikmin.geo.json");
+        return prefix("geo/pikmin.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(RedPikmin object) {
-
-        ResourceLocation returner = null;
-
-        switch (object.TYPE){
-            case "leaf" -> returner = new ResourceLocation(Pikminer404.MODID, "red_pikmin_leaf.png");
-            case "flower" -> returner = new ResourceLocation(Pikminer404.MODID, "red_pikmin_flower.png");
-            case "bud" -> returner = new ResourceLocation(Pikminer404.MODID, "red_pikmin_bud.png");
+    public ResourceLocation getTextureResource(RedPikmin pikmin) {
+        switch (pikmin.TYPE){
+            case "bud" -> {
+                return prefix("textures/entity/red_pikmin_bud.png");
+            }
+            case "flower" -> {
+                return prefix("textures/entity/red_pikmin_flower.png");
+            }
+            default -> {
+                return prefix("textures/entity/red_pikmin_leaf.png");
+            }
         }
-        return returner;
     }
 
     @Override
     public ResourceLocation getAnimationResource(RedPikmin animatable) {
-        return new ResourceLocation(Pikminer404.MODID, "pikmin.animation.json");
+        return prefix("animations/pikmin.animation.json");
     }
 }

@@ -10,17 +10,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModEntityTypes {
+public class PMEntity {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Pikminer404.MODID);
 
     public static final RegistryObject<EntityType<RedPikmin>> RED_PIKMIN =
             ENTITY_TYPES.register("red_pikmin",
                     () -> EntityType.Builder.of(RedPikmin::new, MobCategory.MISC)
-                    .sized(0.5f, 1.0f)
-                    .build(new ResourceLocation(Pikminer404.MODID, "red_pikmin").toString()));
-
-    public static void register(IEventBus eventBus){
-        ENTITY_TYPES.register(eventBus);
-    }
+                            .sized(0.5f, 1.0f)
+                            .build(new ResourceLocation(Pikminer404.MODID, "red_pikmin").toString()));
 }

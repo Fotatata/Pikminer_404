@@ -46,16 +46,16 @@ public class RedPikmin extends AbstractPikmin implements IAnimatable {
 
     private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_pikmin.move", ILoopType.EDefaultLoopTypes.LOOP));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("move", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
-
+        //This wont work it needs to be synched to server and client.
         if (isAttacking){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_pikmin.attack", ILoopType.EDefaultLoopTypes.LOOP));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("attack", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_pikmin.idle", ILoopType.EDefaultLoopTypes.LOOP));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP));
         return PlayState.CONTINUE;
     }
 
